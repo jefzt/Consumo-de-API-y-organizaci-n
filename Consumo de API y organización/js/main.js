@@ -2,16 +2,16 @@ import { getPokemons } from "./services.js";
 import { renderPokemons } from "./ui.js";
 
 const btn = document.getElementById("load-btn");
-const spinner = document.getElementById("spinner");
+const loading = document.getElementById("loading");
 
 btn.addEventListener("click", async () => {
 
-    spinner.classList.remove("hide");
+    loading.style.display = "block";
 
     const pokemons = await getPokemons();
 
-    spinner.classList.add("hide");
-
     renderPokemons(pokemons);
+
+    loading.style.display = "none";
 
 });
